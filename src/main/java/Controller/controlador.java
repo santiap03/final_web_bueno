@@ -29,8 +29,9 @@ public class controlador {
     public List<Cliente> recuperarClientesMayores(@PathVariable("id") int edad) {
         return servicio.ClientesMayores(edad);
     }
-    @PutMapping(value="contactos",consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value="clientes/actualizar/",consumes=MediaType.APPLICATION_JSON_VALUE)
     public void actualizarContacto(@RequestBody Cliente contacto) {
         servicio.actualizarCliente(contacto);
     }
+
 }

@@ -29,7 +29,7 @@ public class DataServiceImpl implements DataService{
 
     @Override
     public void actualizarCliente(Cliente cliente) {
-
+        data.save(cliente);
     }
 
     @Override
