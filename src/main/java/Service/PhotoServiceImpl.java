@@ -1,7 +1,6 @@
 package Service;
 
 import Data.PhotoRepository;
-
 import Model.Photo;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
@@ -17,8 +16,8 @@ public class PhotoServiceImpl implements PhotoService {
     @Autowired
     private PhotoRepository photoRepo;
 
-    public String addPhoto(int ClientId, MultipartFile file) throws IOException {
-        Photo photo = new Photo(ClientId);
+    public String addPhoto(int title, MultipartFile file) throws IOException {
+        Photo photo = new Photo(title);
         photo.setImage(new Binary(BsonBinarySubType.BINARY, file.getBytes()));
         photo = photoRepo.insert(photo);
         return photo.getId();
@@ -30,9 +29,8 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Photo getPhotoByClientId(int ClientId) {
+    public Photo getPhotoByTitle(int title) {
 
-        return photoRepo.findPhotoByClientId(ClientId);
-
+        return photoRepo.findByTitle(title);
     }
 }

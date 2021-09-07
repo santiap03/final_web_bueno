@@ -6,6 +6,7 @@ import Service.DataService;
 import Service.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,8 +32,8 @@ public class controlador {
     public String guardarCliente(@RequestBody Cliente cliente) {
         return String.valueOf(servicio.agregarCliente(cliente));
     }
-    @GetMapping(value="/clientes/mayores/{id}",produces= MediaType.APPLICATION_JSON_VALUE)
-    public List<Cliente> recuperarClientesMayores(@PathVariable("id") int edad) {
+    @GetMapping(value="/clientes/mayores/{age}",produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<Cliente> recuperarClientesMayores(@PathVariable("age") int edad) {
         return servicio.ClientesMayores(edad);
     }
     @PutMapping(value="clientes/actualizar/",consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -41,19 +42,27 @@ public class controlador {
     }
 
 
-    @PostMapping("/clientes/photos")
-    public String addPhoto(@RequestParam("ClientId") int ClientId, @RequestParam("image") MultipartFile image) throws IOException {
-        String id = photoService.addPhoto(ClientId, image);
+
+
+    @PostMapping("/photos/add")
+    public String addPhoto(@RequestParam("title") int title,
+                           @RequestParam("image") MultipartFile image, Model model)
+            throws IOException {
+        String id = photoService.addPhoto(title, image);
         return "redirect:/photos/" + id;
     }
-    @GetMapping("/clientes/photos/{Mongoid}")//imagen by MongoId
+    @GetMapping("/photos/{Mongoid}")//imagen by MongoId
     public String getPhoto(@PathVariable String Mongoid) {
         Photo photo = photoService.getPhoto(Mongoid);
         return Base64.getEncoder().encodeToString(photo.getImage().getData());
     }
-    @GetMapping("/clientes/photos/{Clientid}")//Imagen by ClientId
-    public String getPhotoid(@PathVariable int Clientid) {
-        Photo photo = photoService.getPhotoByClientId(Clientid);
+    @GetMapping("/photo/{id}")
+    public String getPhotoid(@PathVariable int id) {
+        Photo photo = photoService.getPhotoByTitle(id);
+        System.out.println("hola");
         return  Base64.getEncoder().encodeToString(photo.getImage().getData());
+
     }
+
+
 }

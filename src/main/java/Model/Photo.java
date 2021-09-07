@@ -9,16 +9,18 @@ public class Photo {
     @Id
     private String id;
 
-    private Binary image;
 
-    private int ClientId;
+
+    private int title;
 
     public void setImage(Binary image) {
         this.image = image;
     }
 
-    public Photo(int clientId) {
-        this.ClientId = clientId;
+    private Binary image;
+
+    public Photo(int title) {
+        this.title = title;
     }
 
     public String getId() {
@@ -26,18 +28,10 @@ public class Photo {
     }
 
     public int getTitle() {
-        return ClientId;
+        return title;
     }
 
     public Binary getImage() {
         return image;
-    }
-
-    public int getClientId() {
-        return ClientId;
-    }
-
-    public void setClientId(int clientId) {
-        ClientId = clientId;
     }
 }
