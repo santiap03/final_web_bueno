@@ -42,7 +42,7 @@ public class controlador {
     }
 
 
-
+    //Images MongoDB
 
     @PostMapping("/photos/add")
     public String addPhoto(@RequestParam("title") int title,
