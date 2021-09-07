@@ -19,7 +19,9 @@ public class DataServiceImpl implements DataService{
     @Override
     public boolean agregarCliente(Cliente cliente) {
         if(data.findById(cliente.getIdCliente()).isEmpty()){
+
             data.save(cliente);
+
             return true;
         }
         else {

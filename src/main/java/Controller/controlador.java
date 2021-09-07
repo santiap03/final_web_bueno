@@ -45,9 +45,7 @@ public class controlador {
     //Images MongoDB
 
     @PostMapping("/photos/add")
-    public String addPhoto(@RequestParam("title") int title,
-                           @RequestParam("image") MultipartFile image, Model model)
-            throws IOException {
+    public String addPhoto(@RequestParam("title") int title, @RequestParam("image") MultipartFile image, Model model) throws IOException {
         String id = photoService.addPhoto(title, image);
         return "redirect:/photos/" + id;
     }
@@ -62,6 +60,10 @@ public class controlador {
         System.out.println("hola");
         return  Base64.getEncoder().encodeToString(photo.getImage().getData());
 
+    }
+    @RequestMapping
+    public String recupeararClientes() {
+        return "hola";
     }
 
 
