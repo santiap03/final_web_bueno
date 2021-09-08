@@ -62,7 +62,7 @@ public class controlador {
 
     }
     @RequestMapping
-    public String recupeararClientes() {
+    public String defaultmap() {
         return "hola";
     }
 
