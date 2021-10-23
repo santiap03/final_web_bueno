@@ -1,5 +1,6 @@
 package Service;
 
+import Domain.LoginDto;
 import Model.Cliente;
 
 import java.util.List;
@@ -10,5 +11,6 @@ public interface DataService {
     void actualizarCliente(Cliente cliente);
     boolean eliminarCliente(int idCliente);
     Cliente buscarCliente(int idCliente);
-    List<Cliente> ClientesMayores(int edad);
+    String login(LoginDto loginDto);
+
 }

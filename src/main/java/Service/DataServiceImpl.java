@@ -1,6 +1,7 @@
 package Service;
 
 import Data.DatosJPA;
+import Domain.LoginDto;
 import Model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class DataServiceImpl implements DataService{
 
     @Override
     public boolean agregarCliente(Cliente cliente) {
-        if(data.findById(cliente.getIdCliente()).isEmpty()){
+        if(data.findById(cliente.getUsuarioId()).isEmpty()){
 
             data.save(cliente);
 
@@ -51,8 +52,15 @@ public class DataServiceImpl implements DataService{
     }
 
     @Override
-    public List<Cliente> ClientesMayores(int edad) {
-        return data.GetByEdad(edad);
-
+    public String login(LoginDto loginDto) {
+        var user = data.findByUsuarioIdAndPassword(loginDto.getUsuarioId(), loginDto.getPassword());
+        if (user==null){
+            return "false";
+        }
+        else {
+            return user.getRol();
+        }
     }
+
+
 }

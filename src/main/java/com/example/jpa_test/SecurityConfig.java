@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 //solo los miembros del rol admin podrán realizar altas
                 //y para ver la lista de contactos, tendrán que estar autenticados
                 //.antMatchers(HttpMethod.POST,"/clientes/photos").hasRole("ADMIN")
-                .antMatchers("/clientes").authenticated()
+                .antMatchers("/c").authenticated()
                 //.antMatchers("/**").authenticated()
                 //.antMatchers("/contactos/**").authenticated()
                 .and()

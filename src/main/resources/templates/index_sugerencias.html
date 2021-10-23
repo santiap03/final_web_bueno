@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" manifest="data.appache">
+    <head>
+        <!--Datos de la pagina -->
+        <title>Segunda pagina</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Santiago y Laura">
+        <meta name="keywords" content="Biblioteca">
+        <meta http-equiv="refresh" content="500"> 
+        <link rel="stylesheet" type="text/css" href="css/estilo_registro.css">
+        <!--Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+        <!-- Javascript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="sugerencias_back.js"></script>  
+
+        <style type="text/css">
+            *{
+               
+            }
+            .form-control{
+                border-radius:1rem;
+                margin-right: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            
+            <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark ">
+                
+                <a href="index_main.html" class="navbar-brand">SNB</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu"><span class="navbar-toggler-icon"></span></button>
+                <div id="menu" class="collapse navbar-collapse ">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active"><a class="nav-link" href="index_main.html">Inicio</a></li>
+                        <li class="nav-item "><a class="nav-link text-light" href="index_Motivacion.html">Motivacion</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="index_libros.html">Libros</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="index_sugerencias.html">Sugerencias</a></li>
+
+                    </ul>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menu"><span class="navbar-toggler-icon"></span></button>
+                    <button class="btn btn-primary bg-white text-dark" type="button" data-toggle="modal" data-target="#modal_info" id="log">Login</button>
+                    <a class="btn btn-primary bg-white text-dark" href="index_registro.html" id="reg">Registro</a>
+                </div>
+                <!--<form action="index_main.html" class="form-inline"></form>-->
+                    <input class="form-control" type="search" name="buscar" placeholder="Buscar" id="sbar" style="width: 300px;">
+                    <button class="btn btn-success" type="button" onclick="search()">Buscar</button>
+                <!--</form>-->
+            </nav><br><br><br>
+            <!--------->
+            <!--login-->
+            <div class="modal fade" id="modal_info">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title text-center">Ingreso</h4>
+                            <button class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- body -->
+                        <div class="modal-body">
+                            <label>usuarioId: </label><input type="text" name="id" size="50" maxlength="30" placeholder="ingrese nombre" title="Ej: pepito perez perez" pattern="[0-9]+" id="idlog"><br><br>
+                            <label>Contraseña:</label><Input type="password" name="pass" placeholder="A,b,c,1,2,3,4" title="Contraseña de la cuenta" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" id="idpass"><br>
+                            <button class="btn btn-primary" data-dismiss="modal" id="login">Login</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        </div>
+
+                        <!-- footer -->
+                        <div class="modal-footer">
+                            <p class="text-left">Datos tratados bajo politica de seguridad</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <form action="index_main.html" method="post" target="_blank" enctype="multipart/form-data">
+                <div class="container">
+                    <fieldset>
+                        <h2>Quejas y sugerencias</h2>
+                        <label class="form-label" for="loginPassword">Nombre: </label><input id= "rname" class="form-control" type="text" name="Nombre" size="50" maxlength="30" placeholder="ingrese nombre" title="Ej: pepito perez perez" style="width: 30%;" ><br>
+                        <label class="form-label">Email: </label><input class="form-control" type="email" name="correo" placeholder="corrre electronico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="nombre@gmail.com" style="width: 30%;" required><br>                        <label>Sugerencia:</label><br>
+                        <textarea  class="form-control" name="Descripcion" rows="5" cols="50" maxlength="500" placeholder="Ingrese hasta 500 caracteres"></textarea><br>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="anx" name="foto" required>
+                            <label class="custom-file-label" for="validatedCustomFile" style="border-radius: 12px; width: 20%;">Ingrese un anexo</label>
+                            <div class="invalid-feedback">Example invalid custom file feedback</div><br><br>
+                        </div>        
+                    </fieldset>
+                    <input type="submit" name="enviar" value="Enviar" class="btn-dark text-white btn-lg" style="border-radius: 12px; " >
+                    <p>Su queja sera atendida en un plazo de entre 7 y 14 años</p>
+                </div>
+            </form>
+
+
+
+
+
+            
+        </div>
+        
+    </body>
+</html>
