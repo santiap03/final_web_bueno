@@ -27,6 +27,7 @@ public class controlador {
     public String recuperarClientes(@RequestBody LoginDto loginDto) {
         return (servicio.login(loginDto));
     }
+    @ResponseBody
     @PostMapping(value="/clientes",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.TEXT_PLAIN_VALUE)
     public String guardarCliente(@RequestBody Cliente cliente) {
         return String.valueOf(servicio.agregarCliente(cliente));
@@ -37,10 +38,12 @@ public class controlador {
         servicio.actualizarCliente(contacto);
     }
 
-    @GetMapping(value="/test",produces= MediaType.APPLICATION_JSON_VALUE)
-    public String test() {
-        return "index_main";
+    @ResponseBody
+    @PostMapping(value="/clientes/delete",produces= MediaType.APPLICATION_JSON_VALUE)
+    public String deletecliente(@RequestBody LoginDto loginDto) {
+        return servicio.eliminarCliente(loginDto);
     }
+
 
 
 }

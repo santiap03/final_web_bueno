@@ -7,11 +7,16 @@ function start(){
 
 	let log = document.getElementById("login");
 	log.onclick= function print(){
-		console.log("hola");
+		console.log("login");
 		petition2();
 	}
+	let del = document.getElementById("delbtn");
+	del.onclick= function print(){
+		console.log("delete");
+		petition3();
+	}
 	if(sessionStorage.getItem('logged')!= null ){
-		console.log("hola")
+		console.log("logged")
 		var myobj = document.getElementById("log");
 		myobj.remove();
 		var d1 = document.getElementById('reg');
@@ -128,6 +133,45 @@ function tabla(usuarios){
 	for (let i = 0; i < usuarios.length; i++) {
 		var d1 = document.getElementById('lstart');
 		d1.insertAdjacentHTML('afterend', '<li><a href="#" class="list-group-item bg-dark text-white"><div class="row"><div class="col"><p>'+usuarios[i].nombre+'</p> </div><div class="col"><p>'+usuarios[i].usuarioId+'</p></div></div></a></li>');
+
+	}
+}
+
+ function petition3(){
+	console.log("haciendo peticion");
+	let usuarioId= parseInt((document.getElementById("idel").value));
+	let password = "";
+	let data = new LoginDto(usuarioId, password);
+	console.log(data);
+	let url = "http://192.168.1.6:8080/clientes/delete";
+	var response;
+	try {
+		response =   fetch(url, {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+			redirect: 'follow', // manual, *follow, error
+			body: JSON.stringify(data) // body data type must match "Content-Type" header
+		});
+
+	}
+	catch (err) {
+		console.log('fetch failed', err);
+
+	}
+	const a =  response.json();
+
+	console.log(a); // parses JSON response into native JavaScript objects
+	location.reload();
+	return a;
+}
+
+class LoginDto {
+	constructor(usuarioId,password) {
+		this.usuarioId= usuarioId;
+		this.password = password;
 
 	}
 }

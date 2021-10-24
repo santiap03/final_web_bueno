@@ -9,5 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface DatosJPA extends JpaRepository<Cliente, Integer> {
+    Cliente findByUsuarioId(int usuarioId);
     Cliente findByUsuarioIdAndPassword(int usuarioId, String password);
 }

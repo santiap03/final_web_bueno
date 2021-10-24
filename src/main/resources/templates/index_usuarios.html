@@ -79,16 +79,16 @@
 
         </div>
        <h2>Usuarios</h2>
-        <div class="form-inline">
-            <input class="form-control" type="text" name="buscar" placeholder="Buscar" id="sbooks" style="width: 100%;" onkeyup="myFunction()">
-            <!--<button class="btn btn-info" type="button" onclick="search()">Buscar</button><br><br>-->
-
+        <div class="row-8">
+            <label>usuarioId: </label><input type="text" name="id" size="50" maxlength="30" placeholder="ID" title="Ej:99999999" pattern="[0-9]+" id="idel">
+            <button class="btn btn-primary" data-dismiss="modal" id="delbtn">Borrar</button>
+            <br><br>
         </div>
-        <ul id="list-books" class="list-group" style="list-style-type: none;">
-            <li><a href="#" id="lstart" class="list-group-item bg-dark text-white"><div class="row"><div class="col"><p>Nombre</p> </div><div class="col"><p>Id</p></div></div></a></li>
-
-          </ul>
-
+        <div class="row-8">
+            <ul id="list-books" class="list-group" style="list-style-type: none;">
+                <li><a href="#" id="lstart" class="list-group-item bg-dark text-white"><div class="row"><div class="col"><p>Nombre</p> </div><div class="col"><p>Id</p></div></div></a></li>
+            </ul>
+        </div>
 
     </div>
     

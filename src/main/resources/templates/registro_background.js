@@ -25,10 +25,11 @@ function start(){
 			d1.insertAdjacentHTML('afterend', '<a class="btn btn-primary bg-white text-dark" href="index_usuarios.html" id="usuarios">Usuarios</a>');
 		}
 	}
-    elements= document.forms[0].elements;
-    elements[1].onkeypress= restriction;
-    elements[3].onkeypress= restriction2;
-    elements[11].onkeypress= restriction1;
+    elements= document.getElementsByTagName("input");
+    elements[3].onkeypress= restriction;
+    elements[4].onkeypress= restriction2;
+    elements[9].onkeypress= restriction1;
+	elements[5].onkeypress= restriction2;
     
 }
 
@@ -116,7 +117,7 @@ function petition(){
 		body: JSON.stringify(data) // body data type must match "Content-Type" header
 	});
 
-	console.log(response.json()); // parses JSON response into native JavaScript objects
+	//console.log(response.json()); // parses JSON response into native JavaScript objects
 	location.reload();
 	return false;
 }

@@ -9,7 +9,7 @@ public interface DataService {
     List<Cliente> recuperarClientes();
     boolean agregarCliente(Cliente cliente);
     void actualizarCliente(Cliente cliente);
-    boolean eliminarCliente(int idCliente);
+    String eliminarCliente(LoginDto loginDto);
     Cliente buscarCliente(int idCliente);
     String login(LoginDto loginDto);
 

@@ -36,13 +36,14 @@ public class DataServiceImpl implements DataService{
     }
 
     @Override
-    public boolean eliminarCliente(int idCliente) {
-        if(data.findById(idCliente).isEmpty()){
-            return false;
+    public String eliminarCliente(LoginDto loginDto) {
+        var consulta = data.findByUsuarioId(loginDto.getUsuarioId());
+        if(consulta==null){
+            return "false";
         }
         else {
-            data.deleteById(idCliente);
-            return true;
+            data.deleteById(loginDto.getUsuarioId());
+            return "true";
         }
     }
 
